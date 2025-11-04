@@ -52,7 +52,7 @@
     .title{font-family:"Bebas Neue", system-ui, sans-serif; font-size:clamp(40px, 7vw, 88px); line-height:.95; margin:12px 0 12px}
     .accent{background:linear-gradient(90deg, var(--mint), var(--turq) 40%, var(--jade)); -webkit-background-clip:text; background-clip:text; color:transparent}
 
-    .message{font-size:clamp(18px, 2.2vw, 22px); color:#dfe9e4; line-height:1.55; margin:8px 0 14px}
+    .message{font-size:clamp(18px, 2.2vw, 22px); color:var(--mint); line-height:1.65; margin:8px 0 14px; white-space:pre-wrap}
     .subtle{color:var(--muted); font-size:14px}
 
     .tag{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border:1px dashed rgba(168,230,207,.35); border-radius:14px; color:#cfe7dd; background:rgba(46,142,87,.05)}
@@ -105,29 +105,18 @@ Gracias, de verdad. Por ser parte del camino.<br><br>
 <strong>Born from inside to rebuild.</strong>
       </p>
 
-      <p class="subtle">Tip: también puedes pasar el texto por la URL con <span class="tag">?t=<code>Mensaje%20URL%20encoded</code></span></p>
+      
 
       <div class="footer">
-        <button class="btn" id="shareBtn">Compartir</button>
-        <div class="qr">
-          <!-- icono QR -->
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 3h6v6H3V3zm12 0h6v6h-6V3zM3 15h6v6H3v-6zm12 6v-6h2v4h4v2h-6zM15 11h2v2h-2v-2zM11 7h2v2h-2V7zM11 11h2v2h-2v-2z" fill="#A8E6CF"/></svg>
-          <span class="subtle">Genera un QR apuntando a esta URL cuando publiques.</span>
-        </div>
+        <a class="btn" href="https://www.instagram.com/thetemplx/" target="_blank" rel="noopener noreferrer">Entra en The Temple</a>
+        
       </div>
     </section>
   </main>
 
   <script>
-    // Reemplaza el mensaje con el parámetro ?t= (URL encoded). Ej: ?t=Hola%20Temple
-    (function(){
-      const params = new URLSearchParams(location.search);
-      const t = params.get('t');
-      if(t){
-        const msgEl = document.getElementById('msg');
-        msgEl.textContent = decodeURIComponent(t);
-      }
-    })();
+    // Texto fijo (se ha desactivado el reemplazo por parámetro ?t=)
+    (function(){ /* noop */ })();
 
     // Botón compartir (Web Share API si está disponible)
     (function(){
