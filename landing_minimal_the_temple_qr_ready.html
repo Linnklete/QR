@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Temple — Born from Inside</title>
+  <meta name="description" content="Silence creates strength. Página mínima para QR con el mensaje de The Temple."/>
+  <meta property="og:title" content="The Temple — Born from Inside" />
+  <meta property="og:description" content="Silence creates strength. Página mínima para QR." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <meta name="theme-color" content="#0b0b0b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0b;          /* negro Temple */
+      --fg:#e7f2ed;          /* texto claro */
+      --mint:#A8E6CF;        /* mint Temple */
+      --jade:#2E8E57;        /* jade Temple */
+      --turq:#3EC1C9;        /* turquesa */
+      --muted:#7f8b85;
+      --card:#111;
+      --ring: rgba(168,230,207,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:radial-gradient(1200px 800px at 70% 10%,rgba(62,193,201,.08),transparent 60%),
+               radial-gradient(900px 700px at 20% 80%,rgba(46,142,87,.12),transparent 60%), var(--bg);
+      color:var(--fg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      display:grid; place-items:center; padding:24px;
+    }
+    .wrap{width:min(880px,100%);}
+    .card{
+      position:relative;
+      background:linear-gradient(180deg,#0f0f10, #0a0a0a);
+      border:1px solid rgba(168,230,207,.18);
+      border-radius:28px; padding:32px 28px; overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.02);
+      backdrop-filter:saturate(120%);
+    }
+    .glow{position:absolute; inset:-40%; filter: blur(80px); background: radial-gradient(600px 400px at 30% 10%, rgba(46,142,87,.18), transparent 60%), radial-gradient(500px 300px at 80% 80%, rgba(62,193,201,.16), transparent 60%); opacity:.75; pointer-events:none}
+    header{display:flex; align-items:center; gap:14px; margin-bottom:10px}
+    .logo{width:38px; height:38px; display:grid; place-items:center; border-radius:10px; background:linear-gradient(135deg, rgba(46,142,87,.25), rgba(62,193,201,.22)); border:1px solid rgba(168,230,207,.28); box-shadow:0 8px 30px rgba(46,142,87,.25)}
+    .brand{line-height:1}
+    .brand b{font-family:"Bebas Neue", system-ui, sans-serif; letter-spacing:.8px; font-size:28px; display:block}
+    .brand span{color:var(--muted); font-size:13px}
+
+    .title{font-family:"Bebas Neue", system-ui, sans-serif; font-size:clamp(40px, 7vw, 88px); line-height:.95; margin:12px 0 12px}
+    .accent{background:linear-gradient(90deg, var(--mint), var(--turq) 40%, var(--jade)); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+    .message{font-size:clamp(18px, 2.2vw, 22px); color:#dfe9e4; line-height:1.55; margin:8px 0 14px}
+    .subtle{color:var(--muted); font-size:14px}
+
+    .tag{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border:1px dashed rgba(168,230,207,.35); border-radius:14px; color:#cfe7dd; background:rgba(46,142,87,.05)}
+    .tag code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:13px; color:#d7fff2}
+
+    .footer{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; margin-top:22px; padding-top:14px; border-top:1px solid rgba(168,230,207,.16)}
+    .btn{
+      appearance:none; border:none; cursor:pointer; padding:12px 16px; border-radius:12px; font-weight:600; color:#0a0f0d; background:linear-gradient(180deg, var(--mint), #7fd9be);
+      box-shadow:0 12px 30px rgba(168,230,207,.25), inset 0 -1px 0 rgba(0,0,0,.18);
+    }
+    .btn:active{transform:translateY(1px)}
+    .ghost{background:transparent; color:#cfe7dd; border:1px solid rgba(168,230,207,.25)}
+    .qr{display:flex; align-items:center; gap:12px; color:#cfe7dd}
+    .qr svg{opacity:.9}
+
+    /* Responsivo */
+    @media (max-width:520px){
+      .message{font-size:17px}
+      .footer{flex-direction:column; align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="glow" aria-hidden="true"></div>
+
+      <header>
+        <div class="logo" aria-hidden="true">
+          <!-- Mini dragon/templo SVG genérico (puedes sustituir por tu logotipo real) -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 3l6 3v2H6V6l6-3z" stroke="#A8E6CF" stroke-width="1.2"/>
+            <path d="M6 10h12v9H6z" stroke="#A8E6CF" stroke-width="1.2"/>
+            <path d="M3 21h18" stroke="#A8E6CF" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="brand">
+          <b>THE TEMPLE</b>
+          <span>Born from inside · QR landing</span>
+        </div>
+      </header>
+
+      <!-- 🔧 EDITA TU TITULAR Y MENSAJE AQUÍ -->
+      <h1 class="title">Silence <span class="accent">creates</span> strength.</h1>
+      <p class="message" id="msg">
+        Algo se está moviendo. El Guardián ya despertó, pero hay algo más.
+        En la oscuridad, lejos de miradas, la energía ya está ahí: se puede sentir.
+        Cada detalle, cada paso, cada persona… todo está tomando forma. Y tú eres parte de esto.
+        <br /><br />
+        <strong>Coming soon.</strong> ⛩️ Born from inside to rebuild.
+      </p>
+
+      <p class="subtle">Tip: también puedes pasar el texto por la URL con <span class="tag">?t=<code>Mensaje%20URL%20encoded</code></span></p>
+
+      <div class="footer">
+        <button class="btn" id="shareBtn">Compartir</button>
+        <div class="qr">
+          <!-- icono QR -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 3h6v6H3V3zm12 0h6v6h-6V3zM3 15h6v6H3v-6zm12 6v-6h2v4h4v2h-6zM15 11h2v2h-2v-2zM11 7h2v2h-2V7zM11 11h2v2h-2v-2z" fill="#A8E6CF"/></svg>
+          <span class="subtle">Genera un QR apuntando a esta URL cuando publiques.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Reemplaza el mensaje con el parámetro ?t= (URL encoded). Ej: ?t=Hola%20Temple
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const t = params.get('t');
+      if(t){
+        const msgEl = document.getElementById('msg');
+        msgEl.textContent = decodeURIComponent(t);
+      }
+    })();
+
+    // Botón compartir (Web Share API si está disponible)
+    (function(){
+      const btn = document.getElementById('shareBtn');
+      if(!btn) return;
+      btn.addEventListener('click', async () => {
+        const shareData = {
+          title: document.title,
+          text: 'The Temple — Born from Inside',
+          url: location.href
+        };
+        try{
+          if(navigator.share){
+            await navigator.share(shareData);
+          }else{
+            await navigator.clipboard.writeText(location.href);
+            btn.textContent = 'Enlace copiado';
+            setTimeout(()=>btn.textContent='Compartir', 1600);
+          }
+        }catch(e){
+          await navigator.clipboard.writeText(location.href);
+          btn.textContent = 'Enlace copiado';
+          setTimeout(()=>btn.textContent='Compartir', 1600);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
