@@ -95,8 +95,14 @@
       border:none;
     }
     .btn:active{transform:translateY(1px)}
-    footer{margin-top:22px; display:flex; justify-content:center}
-    .legal{text-align:center; color:var(--muted); font-size:12px; max-width:620px}
+    .status{
+      margin-top:8px;
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+      min-height:18px;
+    }
+    .status.err{color:#ffb3b3}
   </style>
 </head>
 
@@ -116,17 +122,17 @@
         Introduce tu correo:
       </p>
 
-      <form action="https://formspree.io/f/xkgkdyrp" method="POST">
+      <form id="templeForm" action="https://formspree.io/f/xkgkdyrp" method="POST">
         <input type="hidden" name="_subject" value="Nuevo lead desde QR The Temple">
         <input type="hidden" name="origen" value="QR-lead-landing">
-        <input type="hidden" name="_redirect" value="https://linnklete.github.io/QR/gracias.html">
 
         <div class="field">
           <label for="email">Tu correo electrónico</label>
           <input type="email" id="email" name="email" placeholder="tu@email.com" required>
         </div>
 
-        <button class="btn" type="submit">Quiero prioridad</button>
+        <button class="btn" type="submit" id="sendBtn">Quiero prioridad</button>
+        <div id="status" class="status"></div>
       </form>
 
       <footer>
@@ -137,5 +143,51 @@
 
     </section>
   </main>
+
+  <script>
+    const form   = document.getElementById('templeForm');
+    const btn    = document.getElementById('sendBtn');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+
+      const email = form.email.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        status.textContent = 'Por favor, introduce un email válido.';
+        status.className = 'status err';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      status.textContent = '';
+
+      try {
+        const data = new FormData(form);
+
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          // Envío correcto: redirigimos a la página de gracias de The Temple
+          window.location.href = 'https://linnklete.github.io/QR/gracias.html';
+        } else {
+          status.textContent = 'No se pudo enviar. Prueba de nuevo en un momento.';
+          status.className = 'status err';
+        }
+      } catch (err) {
+        status.textContent = 'Error de conexión. Inténtalo otra vez.';
+        status.className = 'status err';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Quiero prioridad';
+      }
+    });
+  </script>
 </body>
 </html>
