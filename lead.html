@@ -103,6 +103,8 @@
       min-height:18px;
     }
     .status.err{color:#ffb3b3}
+    footer{margin-top:22px; display:flex; justify-content:center}
+    .legal{text-align:center; color:var(--muted); font-size:12px; max-width:620px}
   </style>
 </head>
 
@@ -122,10 +124,8 @@
         Introduce tu correo:
       </p>
 
-      <form id="templeForm" action="https://formspree.io/f/xkgkdyrp" method="POST">
-        <input type="hidden" name="_subject" value="Nuevo lead desde QR The Temple">
-        <input type="hidden" name="origen" value="QR-lead-landing">
-
+      <!-- OJO: sin action, sin method. Todo lo hace el script. -->
+      <form id="templeForm" novalidate>
         <div class="field">
           <label for="email">Tu correo electrónico</label>
           <input type="email" id="email" name="email" placeholder="tu@email.com" required>
@@ -145,47 +145,52 @@
   </main>
 
   <script>
-    const form   = document.getElementById('templeForm');
-    const btn    = document.getElementById('sendBtn');
-    const status = document.getElementById('status');
+    const ENDPOINT = "https://formspree.io/f/xkgkdyrp";
+    const form     = document.getElementById('templeForm');
+    const btn      = document.getElementById('sendBtn');
+    const statusEl = document.getElementById('status');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      status.textContent = '';
+      statusEl.textContent = "";
 
       const email = form.email.value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        status.textContent = 'Por favor, introduce un email válido.';
-        status.className = 'status err';
+      if (!email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+        statusEl.textContent = "Por favor, introduce un email válido.";
+        statusEl.className = "status err";
         return;
       }
 
       btn.disabled = true;
-      btn.textContent = 'Enviando…';
-      status.textContent = '';
+      btn.textContent = "Enviando…";
+      statusEl.className = "status";
+      statusEl.textContent = "";
 
       try {
-        const data = new FormData(form);
+        const data = new FormData();
+        data.append("email", email);
+        data.append("_subject", "Nuevo lead desde QR The Temple");
+        data.append("origen", "QR-lead-landing");
 
-        const res = await fetch(form.action, {
-          method: 'POST',
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
           body: data,
-          headers: { 'Accept': 'application/json' }
+          headers: { "Accept": "application/json" }
         });
 
         if (res.ok) {
-          // Envío correcto: redirigimos a la página de gracias de The Temple
-          window.location.href = 'https://linnklete.github.io/QR/gracias.html';
+          // Guardado correcto en Formspree → redirigimos a tu página de gracias
+          window.location.href = "https://linnklete.github.io/QR/gracias.html";
         } else {
-          status.textContent = 'No se pudo enviar. Prueba de nuevo en un momento.';
-          status.className = 'status err';
+          statusEl.textContent = "No se pudo enviar. Prueba de nuevo en un momento.";
+          statusEl.className = "status err";
         }
       } catch (err) {
-        status.textContent = 'Error de conexión. Inténtalo otra vez.';
-        status.className = 'status err';
+        statusEl.textContent = "Error de conexión. Inténtalo otra vez.";
+        statusEl.className = "status err";
       } finally {
         btn.disabled = false;
-        btn.textContent = 'Quiero prioridad';
+        btn.textContent = "Quiero prioridad";
       }
     });
   </script>
