@@ -13,176 +13,132 @@
     :root{
       --bg:#0b0b0b;          /* negro Temple */
       --fg:#e7f2ed;          /* texto claro */
-      --mint:#A8E6CF;        /* mint Temple */
+      --mint:#A8E6CF;        /* mint temple */
       --jade:#2E8E57;        /* jade */
       --muted:#8aa096;       /* gris verdoso */
       --ring: rgba(168,230,207,.35);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0;
-      background:
-        radial-gradient(1200px 800px at 70% 10%,rgba(62,193,201,.08),transparent 60%),
-        radial-gradient(900px 700px at 20% 80%,rgba(46,142,87,.12),transparent 60%),
-        var(--bg);
-      color:var(--fg);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      display:grid;
-      place-items:center;
-      padding:24px;
-    }
+    body{margin:0; background:radial-gradient(1200px 800px at 70% 10%,rgba(62,193,201,.08),transparent 60%),
+               radial-gradient(900px 700px at 20% 80%,rgba(46,142,87,.12),transparent 60%), var(--bg);
+      color:var(--fg); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      display:grid; place-items:center; padding:24px}
     .wrap{width:min(860px,100%)}
-    .card{
-      position:relative;
-      background:linear-gradient(180deg,#0f0f10,#0a0a0a);
-      border:1px solid rgba(168,230,207,.18);
-      border-radius:28px;
-      padding:32px 28px;
-      overflow:hidden;
-      box-shadow:
-        0 10px 40px rgba(0,0,0,.45),
-        inset 0 0 0 1px rgba(255,255,255,.02);
-    }
-    .glow{
-      position:absolute;
-      inset:-40%;
-      filter: blur(80px);
-      background:
-        radial-gradient(600px 400px at 30% 10%, rgba(46,142,87,.18), transparent 60%),
-        radial-gradient(500px 300px at 80% 80%, rgba(62,193,201,.16), transparent 60%);
-      opacity:.75;
-      pointer-events:none;
-    }
-    header{
-      display:flex;
-      justify-content:center;
-      margin-bottom:18px;
-    }
-    header img{
-      width:120px;
-      height:auto;
-      opacity:.95;
-    }
-    .title{
-      font-family:"Bebas Neue", system-ui, sans-serif;
-      font-size:clamp(34px,7vw,64px);
-      line-height:1.05;
-      margin:10px 0 12px;
-      text-align:center;
-    }
-    .accent{
-      background:linear-gradient(90deg, var(--mint), #9fe9d4 40%, var(--jade));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .lead{
-      color:var(--mint);
-      font-size:clamp(18px,2.2vw,22px);
-      text-align:center;
-      line-height:1.6;
-      margin:6px 0 22px;
-    }
+    .card{position:relative; background:linear-gradient(180deg,#0f0f10,#0a0a0a); border:1px solid rgba(168,230,207,.18);
+      border-radius:28px; padding:32px 28px; overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.02)}
+    .glow{position:absolute; inset:-40%; filter: blur(80px); background: radial-gradient(600px 400px at 30% 10%, rgba(46,142,87,.18), transparent 60%), radial-gradient(500px 300px at 80% 80%, rgba(62,193,201,.16), transparent 60%); opacity:.75; pointer-events:none}
+    header{display:flex; justify-content:center; margin-bottom:18px}
+    header img{width:120px; height:auto; opacity:.95}
+    .title{font-family:"Bebas Neue", system-ui, sans-serif; font-size:clamp(34px,7vw,64px); line-height:.95; margin:10px 0 12px; text-align:center}
+    .accent{background:linear-gradient(90deg, var(--mint), #9fe9d4 40%, var(--jade)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .lead{color:var(--mint); font-size:clamp(18px,2.2vw,22px); text-align:center; line-height:1.6; margin:6px 0 18px}
 
-    form{
-      display:grid;
-      gap:12px;
-      width:min(560px,100%);
-      margin:0 auto;
-    }
+    form{display:grid; gap:12px; width:min(560px,100%); margin:0 auto}
     .field{display:grid; gap:6px}
     label{font-size:14px; color:var(--muted)}
-    input[type="email"]{
-      appearance:none;
-      width:100%;
-      padding:14px 16px;
-      border-radius:14px;
-      background:#0c0f0e;
-      color:#dff6ee;
-      border:1px solid rgba(168,230,207,.25);
-      outline:none;
-      box-shadow:0 0 0 0 rgba(168,230,207,0);
-      transition:box-shadow .2s, border-color .2s;
-    }
-    input[type="email"]:focus{
-      border-color:var(--mint);
-      box-shadow:0 0 0 4px rgba(168,230,207,.15);
-    }
+    input[type="email"]{appearance:none; width:100%; padding:14px 16px; border-radius:14px;
+      background:#0c0f0e; color:#dff6ee; border:1px solid rgba(168,230,207,.25);
+      outline:none; box-shadow:0 0 0 0 rgba(168,230,207,0); transition:box-shadow .2s, border-color .2s}
+    input[type="email"]:focus{border-color:var(--mint); box-shadow:0 0 0 4px rgba(168,230,207,.15)}
 
-    .btn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:14px 18px;
-      border-radius:14px;
-      font-weight:700;
-      color:#0a0f0d;
-      background:linear-gradient(180deg, var(--mint), #7fd9be);
-      box-shadow:
-        0 12px 30px rgba(168,230,207,.25),
-        inset 0 -1px 0 rgba(0,0,0,.18);
-    }
+    .consent{display:flex; gap:10px; align-items:flex-start; color:#cfe7dd; font-size:13px}
+    .consent input{margin-top:3px}
+
+    .btn{appearance:none; border:none; cursor:pointer; padding:14px 18px; border-radius:14px; font-weight:700; color:#0a0f0d;
+      background:linear-gradient(180deg, var(--mint), #7fd9be); box-shadow:0 12px 30px rgba(168,230,207,.25), inset 0 -1px 0 rgba(0,0,0,.18)}
     .btn:active{transform:translateY(1px)}
+    .btn[disabled]{opacity:.6; cursor:not-allowed}
 
-    .note{
-      color:var(--muted);
-      font-size:12px;
-      text-align:center;
-      margin-top:8px;
-    }
-    footer{
-      margin-top:22px;
-      display:flex;
-      justify-content:center;
-    }
-    .legal{
-      color:var(--muted);
-      font-size:12px;
-      text-align:center;
-      max-width:620px;
-    }
+    .note{color:var(--muted); font-size:12px; text-align:center}
+    .status{margin-top:10px; text-align:center; font-size:14px}
+    .ok{color:#b9f6df}
+    .err{color:#ffb3b3}
 
-    @media (max-width:520px){
-      .card{padding:26px 18px;}
-    }
+    footer{margin-top:22px; display:flex; justify-content:center}
+    .legal{color:var(--muted); font-size:12px; text-align:center; max-width:620px}
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="card">
       <div class="glow" aria-hidden="true"></div>
-
       <header>
-        <!-- usa el mismo logo que en la otra página -->
-        <img src="The-Temple-Imagotipo-Menta.svg" alt="The Temple">
+        <img src="The-Temple-Imagotipo-Menta.svg" alt="The Temple"/>
       </header>
 
-      <h1 class="title">
-        <span class="accent">Si has llegado hasta aquí, no es casualidad.</span>
-      </h1>
+      <h1 class="title"><span class="accent">Si has llegado hasta aquí, no es casualidad.</span></h1>
+      <p class="lead">Si confías plenamente en esto y quieres enterarte de algo interesante antes que los demás...<br>Introduce tu correo:</p>
 
-      <p class="lead">
-        Si confías plenamente en esto y quieres enterarte de algo interesante antes que los demás...<br>
-        Introduce tu correo:
-      </p>
-
-      <!-- De momento el formulario NO envía a ningún lado. Luego le ponemos destino. -->
-      <form action="#" method="POST">
+      <!--
+        📩 ENVÍO DEL FORMULARIO (elige 1):
+        A) Formspree (recomendado para GitHub Pages):
+           1. Crea un formulario en https://formspree.io (free) → copia tu endpoint /f/xxxx
+           2. Sustituye ACTION abajo por tu endpoint.
+        B) Google Forms / Airtable: pega el action correspondiente.
+      -->
+      <form id="templeForm" action="https://formspree.io/f/REEMPLAZA_AQUI" method="POST" novalidate>
+        <!-- honeypot anti-spam -->
+        <input type="text" name="_hp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
         <div class="field">
           <label for="email">Tu correo electrónico</label>
           <input type="email" id="email" name="email" placeholder="tu@email.com" required>
         </div>
-        <button class="btn" type="submit">Quiero prioridad</button>
-        <p class="note">Más adelante conectaremos este formulario para que os lleguen los emails y podáis escribirles con prioridad.</p>
+        <label class="consent">
+          <input type="checkbox" id="ok" required>
+          <span>Acepto recibir un email de prioridad para la <strong>tarifa Fundador</strong> (puedes darte de baja cuando quieras).</span>
+        </label>
+        <button class="btn" type="submit" id="sendBtn">Quiero prioridad</button>
+        <div id="status" class="status"></div>
       </form>
 
       <footer>
-        <p class="legal">
-          Usaremos tu correo solo para avisarte con prioridad sobre la tarifa Fundador y noticias clave de The Temple. Nada de spam.
-        </p>
+        <p class="legal">Protegemos tus datos. Usaremos tu correo solo para avisarte con prioridad sobre cositas clave de The Temple. Nada de spam.</p>
       </footer>
     </section>
   </main>
+
+  <script>
+    // Utilidad: validación sencilla + envío con fetch para evitar redirección
+    const form = document.getElementById('templeForm');
+    const btn  = document.getElementById('sendBtn');
+    const out  = document.getElementById('status');
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      out.textContent='';
+
+      const email = form.email.value.trim();
+      const consent = document.getElementById('ok').checked;
+      if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        out.textContent = 'Por favor, introduce un email válido.'; out.className='status err'; return;
+      }
+      if(!consent){
+        out.textContent = 'Debes aceptar la casilla de consentimiento.'; out.className='status err'; return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+
+      try{
+        const data = new FormData(form);
+        data.append('source','QR-Lead');
+        data.append('timestamp', new Date().toISOString());
+
+        const res = await fetch(form.action, { method:'POST', body: data, headers: { 'Accept': 'application/json' }});
+        if(res.ok){
+          out.innerHTML = '¡Gracias! Te avisaremos con prioridad en ~1 semana.'; out.className='status ok';
+          form.reset();
+        }else{
+          out.textContent = 'No se pudo enviar. Prueba de nuevo en un momento.'; out.className='status err';
+        }
+      }catch(err){
+        out.textContent = 'Error de conexión. Inténtalo otra vez.'; out.className='status err';
+      }finally{
+        btn.disabled = false; btn.textContent='Quiero prioridad';
+      }
+    });
+  </script>
 </body>
 </html>
