@@ -124,7 +124,7 @@
         Introduce tu correo:
       </p>
 
-      <!-- OJO: sin action, sin method. Todo lo hace el script. -->
+      <!-- El formulario ya NO tiene action, todo lo hace el script -->
       <form id="templeForm" novalidate>
         <div class="field">
           <label for="email">Tu correo electrónico</label>
@@ -153,9 +153,12 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       statusEl.textContent = "";
+      statusEl.className = "status";
 
-      const email = form.email.value.trim();
-      if (!email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+      const email = (form.email.value || "").trim();
+
+      // Validación sencilla
+      if (!email || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
         statusEl.textContent = "Por favor, introduce un email válido.";
         statusEl.className = "status err";
         return;
@@ -163,8 +166,6 @@
 
       btn.disabled = true;
       btn.textContent = "Enviando…";
-      statusEl.className = "status";
-      statusEl.textContent = "";
 
       try {
         const data = new FormData();
@@ -179,14 +180,13 @@
         });
 
         if (res.ok) {
-          // Guardado correcto en Formspree → redirigimos a tu página de gracias
           window.location.href = "https://linnklete.github.io/QR/gracias.html";
         } else {
-          statusEl.textContent = "No se pudo enviar. Prueba de nuevo en un momento.";
+          statusEl.textContent = "No se pudo enviar. Inténtalo de nuevo.";
           statusEl.className = "status err";
         }
       } catch (err) {
-        statusEl.textContent = "Error de conexión. Inténtalo otra vez.";
+        statusEl.textContent = "Error de conexión. Inténtalo más tarde.";
         statusEl.className = "status err";
       } finally {
         btn.disabled = false;
@@ -194,5 +194,6 @@
       }
     });
   </script>
+
 </body>
 </html>
